@@ -5,10 +5,10 @@
 
 	<script src="src/Animate.js"></script>
 	<script src="src/Scroller.js"></script>
-          
+    <script src="jquery.stellar.js"></script>      
 	<script src="demo/asset/render.js"></script>
 
- 
+ <script type="text/javascript" src="dev.debug.js"></script>
 
  <!-- aqui tan los estilos de todo no hay css  -->
 
@@ -58,8 +58,34 @@
 /*lo llame como imagen del html pa aplicar el parallax*/
 img{
 		width: 100%;
+		
 	}
 	
+  .horizon
+{
+  z-index: 1;
+}
+
+.middle
+{
+  z-index: 500;
+ }
+.front
+
+{
+  z-index: 800;
+}
+
+.superfront{
+    z-index: 1000;
+}
+
+.scroll {
+  position: fixed;
+  bottom: auto;
+  width: 4000px;
+  top: 0;
+}
 	
 
 	
@@ -70,13 +96,34 @@ img{
 	<div id="container">
 		<div id="content">
 			
-			<div class="content2">
-		           <img src="webcomicgaviotadibujo.jpg">
+			<div class="content2 isViewport" >
+		           <div class="horizon scroll" >
+                       <img src="3.png" alt="" />
+                   </div>
+                   <div class="middle scroll">
+                       <img src="2.png" alt="" />
+                   </div>
+                   <div class="front scroll">
+                       <img src="1.png" alt="" />
+                   </div>
+                   <div class="superfront scroll">
+                       <img src="4.png" alt="" />
+                   </div>
 			</div>
-			<div class="content2">
-				<img src="webcomicgaviotadibujo.jpg">
-				
-			</div>
+			<div class="content2 isViewport">
+		           <div class="horizon scroll">
+                       <img src="3.png" alt="" />
+                   </div>
+                   <div class="middle scroll">
+                       <img src="2.png" alt="" />
+                   </div>
+                   <div class="front scroll">
+                       <img src="1.png" alt="" />
+                   </div>
+                   <div class="superfront scroll">
+                       <img src="4.png" alt="" />
+                   </div>
+			
 		</div>
 
 	
@@ -172,5 +219,6 @@ img{
 	}
 	
 	</script>
+	 <script type="text/javascript" src="libs/jquery.min.js"></script>
 </body>
 </html>
