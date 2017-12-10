@@ -10,6 +10,8 @@
 
  <script type="text/javascript" src="dev.debug.js"></script>
 
+  <script type="text/javascript" src="libs/jquery.min.js"></script>
+
  <!-- aqui tan los estilos de todo no hay css  -->
 
 	<style type="text/css">
@@ -56,34 +58,43 @@
 	}
 	
 /*lo llame como imagen del html pa aplicar el parallax*/
-img{
-		width: 100%;
-		
-	}
+
 	
-  .horizon
+
+.horizon
 {
   z-index: 1;
+  width: 3000px;
+
 }
 
 .middle
 {
   z-index: 500;
- }
-.front
+  width: 3400px;
 
+
+}
+.front
 {
   z-index: 800;
+  width: 3200px;
+}
+
+img{
+max-height: 650px;
+
 }
 
 .superfront{
     z-index: 1000;
+  width: 3000px;
+
 }
 
 .scroll {
   position: fixed;
   bottom: auto;
-  width: 4000px;
   top: 0;
 }
 	
@@ -150,7 +161,7 @@ img{
 
 	scroller.setPosition(rect.left+container.clientLeft, rect.top+container.clientTop);
 	scroller.setDimensions(container.clientWidth, container.clientHeight, content.offsetWidth, content.offsetHeight);
-	scroller.setSnapSize(100, 100);
+	
 	
 	
 	// Event Handler weaita q presumo es el revote y el touch, este webio pal escritorio 
