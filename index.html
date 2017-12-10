@@ -8,6 +8,10 @@
           
 	<script src="demo/asset/render.js"></script>
 
+ 
+
+ <!-- aqui tan los estilos de todo no hay css  -->
+
 	<style type="text/css">
 	
 	*{
@@ -20,6 +24,8 @@
 		font-size: 12px;
 	}
 		
+
+/*este wn es importante */
 	#container{
 		width: 100%;
 		height: 600px;
@@ -32,38 +38,25 @@
 		
 	
 	}
-	
-	#content{
+
+
+/*	la medida es importante que sea igual a la suma de los hijos*/
+#content{
 	
 		width: 8000px;
 		height: 600px;
-
-
-
-			-webkit-transform-origin: left top;
-		-webkit-transform: translateZ(0);
-		-moz-transform-origin: left top;
-		-moz-transform: translateZ(0);
-		-ms-transform-origin: left top;
-		-ms-transform: translateZ(0);
-		-o-transform-origin: left top;
-		-o-transform: translateZ(0);
-		transform-origin: left top;
-		transform: translateZ(0);
-	
 	}
-		.content2{
+
+/*	estos son los hijos*/	
+.content2{
 	
 		width: 4000px;
 		height: 600px;
-		
-	
-
-float: right;
+		float: right;
 	}
-
-
-	img{
+	
+/*lo llame como imagen del html pa aplicar el parallax*/
+img{
 		width: 100%;
 	}
 	
@@ -98,13 +91,13 @@ float: right;
 
 	
 
-	// Initialize Scroller
+	// Initialize Scroller nose q hace esto pero no lo toques
 	var scroller = new Scroller(render, {
 		snapping: false
 	});
 	
 	
-	// Setup Scroller
+	// Setup Scroller 
 
 	var rect = container.getBoundingClientRect();
 
@@ -113,7 +106,7 @@ float: right;
 	scroller.setSnapSize(100, 100);
 	
 	
-	// Event Handler
+	// Event Handler weaita q presumo es el revote y el touch, este webio pal escritorio 
 	
 	if ('ontouchstart' in window) {
 		
