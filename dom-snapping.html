@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Scroller - Snapping</title>
+
+	<script src="src/Animate.js"></script>
+	<script src="src/Scroller.js"></script>
+          
+	<script src="demo/asset/render.js"></script>
+
+	<style type="text/css">
+	
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	body{
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 12px;
+	}
+		
+	#container{
+		width: 100%;
+		height: 600px;
+		border: 0px solid black;
+		position: absolute;
+		top: 20px;
+		left: 0px;
+		overflow: hidden;
+
+		
+	
+	}
+	
+	#content{
+	
+		width: 8000px;
+		height: 600px;
+
+
+
+			-webkit-transform-origin: left top;
+		-webkit-transform: translateZ(0);
+		-moz-transform-origin: left top;
+		-moz-transform: translateZ(0);
+		-ms-transform-origin: left top;
+		-ms-transform: translateZ(0);
+		-o-transform-origin: left top;
+		-o-transform: translateZ(0);
+		transform-origin: left top;
+		transform: translateZ(0);
+	
+	}
+		.content2{
+	
+		width: 4000px;
+		height: 600px;
+		
+	
+
+float: right;
+	}
+
+
+	img{
+		width: 100%;
+	}
+	
+	
+
+	
+	</style>
+
+</head>
+<body>
+	<div id="container">
+		<div id="content">
+			
+			<div class="content2">
+		           <img src="webcomicgaviotadibujo.jpg">
+			</div>
+			<div class="content2">
+				<img src="webcomicgaviotadibujo.jpg">
+				
+			</div>
+		</div>
+
+	
+	</div>
+
+	<script type="text/javascript">
+
+	var container = document.getElementById("container");
+	var content = document.getElementById("content");
+	
+
+
+	
+
+	// Initialize Scroller
+	var scroller = new Scroller(render, {
+		snapping: false
+	});
+	
+	
+	// Setup Scroller
+
+	var rect = container.getBoundingClientRect();
+
+	scroller.setPosition(rect.left+container.clientLeft, rect.top+container.clientTop);
+	scroller.setDimensions(container.clientWidth, container.clientHeight, content.offsetWidth, content.offsetHeight);
+	scroller.setSnapSize(100, 100);
+	
+	
+	// Event Handler
+	
+	if ('ontouchstart' in window) {
+		
+		container.addEventListener("touchstart", function(e) {
+			// Don't react if initial down happens on a form element
+			if (e.target.tagName.match(/input|textarea|select/i)) {
+				return;
+			}
+			
+			scroller.doTouchStart(e.touches, e.timeStamp);
+			e.preventDefault();
+		}, false);
+
+		document.addEventListener("touchmove", function(e) {
+			scroller.doTouchMove(e.touches, e.timeStamp);
+		}, false);
+
+		document.addEventListener("touchend", function(e) {
+			scroller.doTouchEnd(e.timeStamp);
+		}, false);
+		
+	} else {
+		
+		var mousedown = false;
+
+		container.addEventListener("mousedown", function(e) {
+			// Don't react if initial down happens on a form element
+			if (e.target.tagName.match(/input|textarea|select/i)) {
+				return;
+			}
+			
+			scroller.doTouchStart([{
+				pageX: e.pageX,
+				pageY: e.pageY
+			}], e.timeStamp);
+
+			mousedown = true;
+		}, false);
+
+		document.addEventListener("mousemove", function(e) {
+			if (!mousedown) {
+				return;
+			}
+
+			scroller.doTouchMove([{
+				pageX: e.pageX,
+				pageY: e.pageY
+			}], e.timeStamp);
+
+			mousedown = true;
+		}, false);
+
+		document.addEventListener("mouseup", function(e) {
+			if (!mousedown) {
+				return;
+			}
+
+			scroller.doTouchEnd(e.timeStamp);
+
+			mousedown = false;
+		}, false);
+		
+	}
+	
+	</script>
+</body>
+</html>
