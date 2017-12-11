@@ -5,43 +5,57 @@
 
 	<script src="src/Animate.js"></script>
 	<script src="src/Scroller.js"></script>
-          
+    
 	<script src="demo/asset/render.js"></script>
+
+
+
+
+
+
+ <!-- aqui tan los estilos de todo no hay css  -->
 
 	<style type="text/css">
 	
-	*{
-		margin: 0;
-		padding: 0;
-	}
+
 	
 	body{
 		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 12px;
+		overflow: scroll;
 	}
 		
+
+/*este wn es importante */
 	#container{
 		width: 100%;
-		height: 620px;
+		height: 600px;
 		border: 0px solid black;
 		position: absolute;
-		top: 0px;
+		top: 20px;
 		left: 0px;
-		overflow: hidden;
-		
+		overflow: scroll;
+
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		-o-user-select: none;
 		user-select: none;
-	}
-	
-	#content{
-		background: white;
-		width: 55672px;
-		height: 680px;
+
 		
-		-webkit-transform-origin: left top;
+	
+	}
+
+
+/*	la medida es importante que sea igual a la suma de los hijos*/
+#content{
+	
+		width: 6800px;
+		height: 600px;
+		position: absolute;
+		overflow-x: : hidden;
+
+			-webkit-transform-origin: left top;
 		-webkit-transform: translateZ(0);
 		-moz-transform-origin: left top;
 		-moz-transform: translateZ(0);
@@ -52,134 +66,141 @@
 		transform-origin: left top;
 		transform: translateZ(0);
 	}
+
+/*	estos son los hijos*/	
+.content2{
+	
+		width: 3400px;
+		height: 600px;
+		float: right;
+	}
+	
+/*lo llame como imagen del html pa aplicar el parallax*/
+
 	
 
-.capa{
-	width: 6959px;
-	height: 620px;
-	float: left;
+.horizon
+{
+  z-index: 1;
+  width: 3400px;
 
 }
 
-#escena1{
-	background: url("imagenes/1c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
+.middle
+{
+  z-index: 500;
+  width: 3400px;
+
+
+}
+.front
+{
+  z-index: 800;
+  width: 3400px;
 }
 
-#escena2{
-	background: url("imagenes/2c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
+img{
+max-height: 600px;
+min-height: 600px;
+
 }
 
+.superfront{
+    z-index: 1000;
+  width: 3400px;
 
-#escena3{
-	background: url("imagenes/3c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
 }
 
+.scroll {
+ position: absolute;
+  bottom: auto;
 
-#escena4{
-background: url("imagenes/4c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
+  top: 0;
 }
 
-
-#escena5{
-background: url("imagenes/5c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
+#d1{
+	left: 0px;
 }
 
-#escena6{
-	background: url("imagenes/6c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
-}
-
-#escena7{
-background: url("imagenes/7c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
-}
-
-#escena8{
-	background: url("imagenes/8c.jpg") repeat-x left top;
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-background-size: cover;
+#d2{
+	left: 0px;
 }
 	
-	</style>
+
+</style>	
 
 </head>
 <body>
 	<div id="container">
 		<div id="content">
-			<div class="capa" id="escena1"></div>
-			<div class="capa" id="escena2"></div>
-			<div class="capa" id="escena3"></div>
-			<div class="capa" id="escena4"></div>
-			<div class="capa" id="escena5"></div>
-			<div class="capa" id="escena6"></div>
-			<div class="capa" id="escena7"></div>
-			<div class="capa" id="escena8"></div>
-		</div>
+			
+			<div class="content2" id="d1">
+		          
+                       <img class="horizon scroll" src="3.png" alt="" />
+                  
+                   
+                       <img class="middle scroll" src="2.png" alt="" />
+                   
+                 
+                       <img class="front scroll" src="1.png" alt="" />
+                   
+                  
+                       <img  class="superfront scroll" src="4.png" alt="" />
+                   
+			</div>
+			<div class="content2" id="d2">
+		          
+                       <img class="horizon scroll" src="3.png" alt="" />
+                  
+                   
+                       <img class="middle scroll" src="2.png" alt="" />
+                   
+                 
+                       <img class="front scroll" src="1.png" alt="" />
+                   
+                  
+                       <img  class="superfront scroll" src="4.png" alt="" />
+                   
+			</div>
+
+	
 	</div>
 
 	<script type="text/javascript">
 
+
+	function parallaxScroll(){
+	var scrolled = $(window).scrollTop();
+	$('.horizon').css('left',(0-(scrolled*.25))+'px');
+	$('.middle').css('left',(0-(scrolled*.5))+'px');
+	$('.front').css('left',(0-(scrolled*.75))+'px');
+	$('.superfront').css('left',(0-(scrolled*1))+'px');
+}	
+
 	var container = document.getElementById("container");
 	var content = document.getElementById("content");
 
-	// Content Generator
-	// var size = 100;
-	// var frag = document.createDocumentFragment();
-	// for (var row=0, rl=content.clientHeight/size; row<rl; row++) {
-	// 	for (var cell=0, cl=content.clientWidth/size; cell<cl; cell++) {
-	// 		elem = document.createElement("div");
-	// 		elem.className = "cell";
-	// 		elem.style.backgroundColor = row%2 + cell%2 > 0 ? "#ddd" : "";
-	// 		elem.innerHTML = row+","+cell;
-	// 		frag.appendChild(elem);
-	// 	}
-	// }
-	// content.appendChild(frag);
+	
 
-	// Initialize Scroller
+
+	
+
+	// Initialize Scroller nose q hace esto pero no lo toques
 	var scroller = new Scroller(render, {
-		snapping: true
+		snapping: false
 	});
 	
 	
-	// Setup Scroller
+	// Setup Scroller 
 
 	var rect = container.getBoundingClientRect();
 
 	scroller.setPosition(rect.left+container.clientLeft, rect.top+container.clientTop);
 	scroller.setDimensions(container.clientWidth, container.clientHeight, content.offsetWidth, content.offsetHeight);
-	scroller.setSnapSize(0, 0);
 	
 	
-	// Event Handler
+	
+	// Event Handler weaita q presumo es el revote y el touch, este webio pal escritorio 
 	
 	if ('ontouchstart' in window) {
 		
@@ -245,5 +266,6 @@ background-size: cover;
 	}
 	
 	</script>
+	 <script type="text/javascript" src="libs/jquery.min.js"></script>
 </body>
 </html>
